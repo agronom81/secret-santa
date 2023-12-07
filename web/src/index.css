@@ -119,6 +119,10 @@
     @apply mb-4
   }
 
+  .error-message {
+    @apply text-orangeRed block py-2
+  }
+
   .dropdown {
     @apply relative top-6 left-6
   }
@@ -142,6 +146,18 @@
 
   .with-rulers {
     @apply flex items-center gap-7 justify-center;
+  }
+
+  .auth-links {
+    @apply text-center text-white
+  }
+
+  .auth-links a {
+    @apply underline hover:no-underline
+  }
+
+  .auth-form {
+    @apply mb-10
   }
 
   .with-rulers:before,
