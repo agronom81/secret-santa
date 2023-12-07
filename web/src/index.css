@@ -39,7 +39,8 @@
   input[type="number"],
   input[type="tel"],
   input[type="email"],
-  input[type="text"] {
+  input[type="text"],
+  input[type="date"] {
     @apply font-sans text-2xl h-[100px] w-full px-7
   }
 
@@ -67,7 +68,7 @@
   }
 
   input[type="checkbox"] + label {
-    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer
+    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer dark:text-white
   }
 
   input[type="checkbox"] + label:before {
@@ -94,7 +95,7 @@
   }
 
   main {
-    @apply z-10 overflow-scroll relative mb-[350px];
+    @apply z-10 overflow-auto relative mb-[350px];
   }
 
   svg {
@@ -104,7 +105,7 @@
 
 @layer components {
   .bg-auth {
-    @apply min-h-screen w-screen bg-silverTree dark:bg-nileBlue bg-[center_top] bg-no-repeat bg-[length:1440px_auto] min-[1440px]:bg-[length:100%_auto];
+    @apply min-h-screen w-full bg-silverTree dark:bg-nileBlue bg-[center_top] bg-no-repeat bg-[length:1440px_auto] min-[1440px]:bg-[length:100%_auto];
   }
 
   .bg-interior {

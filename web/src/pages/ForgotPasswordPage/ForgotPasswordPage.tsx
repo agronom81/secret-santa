@@ -1,16 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-import {
-  Form,
-  Label,
-  TextField,
-  Submit,
-  FieldError,
-  EmailField,
-} from '@redwoodjs/forms'
+import { Form, Label, Submit, FieldError, EmailField } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { toast, Toaster } from '@redwoodjs/web/toast'
+import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
@@ -49,7 +42,6 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags title="Forgot Password" />
 
-      <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <HeaderWithRulers
         className="mb-8 text-white"
         heading="FORGOT PASSWORD?"
