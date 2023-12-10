@@ -5,7 +5,7 @@ export const schema = gql`
     event: Event!
     userId: Int!
     user: User!
-    touserId: Int!
+    toUserId: Int!
     toUser: User!
     message: String!
     createdAt: DateTime!
@@ -19,14 +19,14 @@ export const schema = gql`
   input CreateThankYouInput {
     eventId: String!
     userId: Int!
-    touserId: Int!
+    toUserId: Int!
     message: String!
   }
 
   input UpdateThankYouInput {
     eventId: String
     userId: Int
-    touserId: Int
+    toUserId: Int
     message: String
   }
 

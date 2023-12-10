@@ -11,8 +11,8 @@ generator client {
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 model User {
-  id                  Int          @id @default(autoincrement())
-  email               String       @unique
+  id                  Int        @id @default(autoincrement())
+  email               String     @unique
   hashedPassword      String
   salt                String
   resetToken          String?
@@ -20,15 +20,15 @@ model User {
   firstName           String?
   lastName            String?
   avatar              String?
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
-  role                Role         @default(USER)
-  status              UserStatus[]
-  santa               Pairing[]    @relation(name: "Pairing_Santa")
-  person              Pairing[]    @relation(name: "Pairing_Person")
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  role                Role       @default(USER)
+  invite              Invite[]
+  santa               Pairing[]  @relation(name: "Pairing_Santa")
+  person              Pairing[]  @relation(name: "Pairing_Person")
   wishList            WishList[]
-  thankYouAuthor      ThankYou[]   @relation(name: "ThankYou_User")
-  ThankYouToUser      ThankYou[]   @relation(name: "ThankYou_ToUser")
+  thankYouAuthor      ThankYou[] @relation(name: "ThankYou_User")
+  ThankYouToUser      ThankYou[] @relation(name: "ThankYou_ToUser")
 }
 
 enum Role {
@@ -36,13 +36,15 @@ enum Role {
   USER
 }
 
-model UserStatus {
-  id      Int    @id @default(autoincrement())
-  userId  Int
-  user    User   @relation(fields: [userId], references: [id])
+model Invite {
+  id      String @id @default(uuid())
+  userId  Int?
+  user    User?  @relation(fields: [userId], references: [id])
   status  Status @default(INVITED)
   eventId String
   event   Event  @relation(fields: [eventId], references: [id])
+  email   String
+  name    String
 }
 
 enum Status {
@@ -52,12 +54,12 @@ enum Status {
 }
 
 model Event {
-  id           String       @id @default(uuid())
+  id           String     @id @default(uuid())
   name         String
   date         DateTime
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-  userStatus   UserStatus[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  invite       Invite[]
   sendReminder Boolean
   pairing      Pairing[]
   wishList     WishList[]
@@ -98,8 +100,8 @@ model ThankYou {
   event     Event    @relation(fields: [eventId], references: [id])
   userId    Int
   user      User     @relation(fields: [userId], references: [id], name: "ThankYou_User")
-  touserId  Int
-  toUser    User     @relation(fields: [touserId], references: [id], name: "ThankYou_ToUser")
+  toUserId  Int
+  toUser    User     @relation(fields: [toUserId], references: [id], name: "ThankYou_ToUser")
   message   String
   createdAt DateTime @default(now())
 }

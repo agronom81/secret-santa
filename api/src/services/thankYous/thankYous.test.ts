@@ -33,14 +33,14 @@ describe('thankYous', () => {
       input: {
         eventId: scenario.thankYou.two.eventId,
         userId: scenario.thankYou.two.userId,
-        touserId: scenario.thankYou.two.touserId,
+        toUserId: scenario.thankYou.two.toUserId,
         message: 'String',
       },
     })
 
     expect(result.eventId).toEqual(scenario.thankYou.two.eventId)
     expect(result.userId).toEqual(scenario.thankYou.two.userId)
-    expect(result.touserId).toEqual(scenario.thankYou.two.touserId)
+    expect(result.toUserId).toEqual(scenario.thankYou.two.toUserId)
     expect(result.message).toEqual('String')
   })
 

@@ -21,6 +21,14 @@
     @apply font-handwriting uppercase text-xl tracking-tighter
   }
 
+  .event-date {
+    @apply font-handwriting uppercase tracking-tighter text-4xl text-white
+  }
+
+  .event-name {
+    @apply font-condensed text-[166px] uppercase leading-[0.8] text-white
+  }
+
   label:has(+ textarea:placeholder-shown),
   label:has(+ input:placeholder-shown) {
     @apply text-3xl top-8 left-8 transition-all duration-300 pointer-events-none
@@ -79,7 +87,7 @@
     @apply content-[''] w-10 h-10 block relative -top-1 bg-checked
   }
 
-  button[type="submit"] {
+  button[type="submit"]:not(.round-button) {
     @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5;
   }
 
@@ -104,12 +112,13 @@
 }
 
 @layer components {
+
   .bg-auth {
     @apply min-h-screen w-full bg-silverTree dark:bg-nileBlue bg-[center_top] bg-no-repeat bg-[length:1440px_auto] min-[1440px]:bg-[length:100%_auto];
   }
 
   .bg-interior {
-    @apply grid min-h-screen w-screen grid-cols-12 gap-x-5 bg-silverTree bg-no-repeat dark:bg-nileBlue
+    @apply grid min-h-screen w-full grid-cols-12 gap-x-5 bg-silverTree bg-no-repeat dark:bg-nileBlue
   }
 
   .page-title {
