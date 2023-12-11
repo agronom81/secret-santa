@@ -32,7 +32,10 @@ export const Failure = ({
 
 export const Success = ({
   event,
-}: CellSuccessProps<FindEventHeaderQuery, FindEventHeaderQueryVariables>) => {
+  showEditForm,
+}: CellSuccessProps<FindEventHeaderQuery, FindEventHeaderQueryVariables> & {
+  showEditForm: () => void
+}) => {
   const matchClick = () => {
     console.log('Click')
   }
@@ -42,7 +45,7 @@ export const Success = ({
       <h3 className="event-date">{prettifyDate(event.date)}</h3>
       <div className="flex items-center gap-3">
         <h1 className="event-name m-0 flex-1 p-0">{event.name}</h1>
-        <button className="text-black dark:text-white">
+        <button className="text-black dark:text-white" onClick={showEditForm}>
           <Icon id="edit" />
         </button>
         <Button
